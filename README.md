@@ -1,4 +1,4 @@
-# grade-calculator-tool
+# Grade Calculator Tool
 
 - 📑 Use this [Grade Calculator Tool] (https://vincenttsengca.github.io/grade-calculator-tool/) to help calculate your final grade.
 
