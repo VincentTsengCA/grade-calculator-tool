@@ -1,1 +1,195 @@
+<!-- index.html -->
+<!-- Grade Calculator Tool By Vincent Tseng -->
+<!-- https://github.com/VincentTsengCA -->
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Use this Grade Calculator Tool to help calculate your final grade.">
+    
+    <title>Grade Calculator Tool</title>
+
+    <style>
+        @font-face {
+            font-family: KdamThmorPro-Regular;
+            src: url("font/KdamThmorPro-Regular.ttf");
+        }
+
+        html, body {
+            background-image: linear-gradient(rgb(90, 125, 160), rgb(160, 175, 185));
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+
+            font-family: KdamThmorPro-Regular;
+            font-size: 110%;
+            color: whitesmoke;
+            
+            margin: 1em 1em 1em 1em;
+            height: 100%;
+            
+            overflow: visible;
+            user-select: none;
+        }
+
+        h1 {
+            text-align: center;
+            letter-spacing: 0.03em;
+        }
+
+        p {
+            text-align: center;
+            font-size: 110%;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 40em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 35em;
+            border-collapse: collapse;
+        }
+
+        td, th {
+            text-align: center;
+            letter-spacing: 0.1em;
+            width: 50%;
+            padding: 0.5em;
+            background-color: rgba(61, 139, 129, 0.3);
+            border: 0.1em solid lightgray;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(61, 92, 139, 0.2);
+        }
+
+        input {
+            text-align: right;
+            font-family: KdamThmorPro-Regular;
+            font-size: 110%;
+            margin-bottom: 0.5em;
+            border: 0.05em solid darkgray;
+        }
+
+        .GradeTable {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .GradePercentage, .AssignmentWeight {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0.5em;
+            display: block;
+            width: 8em;
+        }
+
+        .AddRow {
+            text-align: center;
+            font-size: 120%;
+            width: 3em;
+            height: 1.75em;
+            background-color: white;
+            color: rgb(95, 95, 95);
+            border: 0.1em dashed rgb(148, 148, 148);
+        }
+
+        .AddRow:hover {
+            background-color: lightgray;
+        }
+    </style>
+
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div style="margin-bottom: 2.5em;">
+        <h1>
+            Grade Calculator Tool
+        </h1>
+
+        <hr style="max-width: 27.5em;">
+
+        <p style="margin-top: 1.5em;">
+            Use this tool to help calculate your final grade.
+            In each row below, enter your grade percentage on an assignment and its overall weight.
+            Once you are finished inputting your assignments, look below to see your final grade.
+        </p>
+    </div>
+    
+    <table class="GradeTable">
+        <tbody id="GradeTableBody">
+            <tr>
+                <th>
+                    Grade Percentage
+                </th>
+                
+                <th>
+                    Assignment Weight
+                </th>
+            </tr>
+
+            <tr id="Assignment1">
+                <td>
+                    <input class="GradePercentage" type="text" placeholder="%" oninput="calculateGrade()">
+                </td>
+
+                <td>
+                    <input class="AssignmentWeight" type="text" placeholder="%" oninput="calculateGrade()">
+                </td>
+            </tr>
+
+            <tr id="Assignment2">
+                <td>
+                    <input class="GradePercentage" type="text" placeholder="%" oninput="calculateGrade()">
+                </td>
+
+                <td>
+                    <input class="AssignmentWeight" type="text" placeholder="%" oninput="calculateGrade()">
+                </td>
+            </tr>
+
+            <tr id="Assignment3">
+                <td>
+                    <input class="GradePercentage" type="text" placeholder="%" oninput="calculateGrade()">
+                </td>
+
+                <td>
+                    <input class="AssignmentWeight" type="text" placeholder="%" oninput="calculateGrade()">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: center;">
+        <button class="AddRow" onclick="addAssignment()">
+            +
+        </button>
+
+        <button class="AddRow" onclick="removeAssignment()">
+            -
+        </button>
+    </div>
+
+    <div style="margin-left: auto; margin-right: auto; margin-top: 3em; padding: 0.15em; max-width: 45em; background-color: rgba(114, 142, 151, 0.7);">
+        <h1 id="FinalGrade">
+            Final Grade: 0.00%
+        </h1>
+
+        <p id="AssignmentWeightNote" style="display: none;">
+            (Note: Your total inputted assignment weight is over 100%)
+        </p>
+    </div>
+
+    <div style="position: sticky; float: right; top: 95%">
+        <a href="https://github.com/VincentTsengCA" target="_blank" style="color: rgba(255, 255, 255, 0.6)">
+            Made By Vincent Tseng
+        </a>
+    </div>
+</body>
+
+</html>
